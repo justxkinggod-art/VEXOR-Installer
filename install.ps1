@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-$url = "https://github.com/justxkinggod-art/VEXOR-Installer/releases/download/v1.0.0/VEXORV1.zip"
+$url = "https://github.com/justxkinggod-art/VEXOR-Installer/releases/download/v1.0.0/VEXORV1-NATIVE.zip"
 
 $zip = "$env:TEMP\VEXORV1.zip"
 $dir = "$env:TEMP\VEXORV1"
