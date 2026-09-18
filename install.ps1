@@ -1,9 +1,9 @@
 $ErrorActionPreference = "Stop"
 
-$url = "https://github.com/justxkinggod-art/VEXOR-Installer/releases/download/v1.0.0/VEXORV1-NATIVE.zip"
+$zip = "$env:TEMP\VEXORV1-NATIVE.zip"
+$dir = "$env:TEMP\VEXORV1-NATIVE"
 
-$zip = "$env:TEMP\VEXORV1.zip"
-$dir = "$env:TEMP\VEXORV1"
+$url = "https://github.com/justxkinggod-art/VEXOR-Installer/releases/download/v1.0.0/VEXORV1-NATIVE.zip"
 
 try {
     if (Test-Path $zip) {
@@ -14,7 +14,7 @@ try {
         Remove-Item $dir -Recurse -Force
     }
 
-    Write-Host "Downloading VEXOR..."
+    Write-Host "Downloading VEXOR..." -ForegroundColor Cyan
 
     Invoke-WebRequest -Uri $url -OutFile $zip -UseBasicParsing
 
@@ -22,7 +22,7 @@ try {
         throw "Download failed."
     }
 
-    Write-Host "Extracting VEXOR..."
+    Write-Host "Extracting VEXOR..." -ForegroundColor Cyan
 
     Expand-Archive -Path $zip -DestinationPath $dir -Force
 
@@ -33,7 +33,7 @@ try {
         throw "VEXOR.exe not found."
     }
 
-    Write-Host "Starting VEXOR..."
+    Write-Host "Starting VEXOR..." -ForegroundColor Cyan
 
     Start-Process $exe.FullName
 
