@@ -2,16 +2,15 @@ $ErrorActionPreference = "Stop"
 
 $zip = "$env:TEMP\VEXORV1-NATIVE.zip"
 $dir = "$env:TEMP\VEXORV1-NATIVE"
-
 $url = "https://github.com/justxkinggod-art/VEXOR-Installer/releases/download/v1.0.0/VEXORV1-NATIVE.zip"
 
 try {
     if (Test-Path $zip) {
-        Remove-Item $zip -Force
+        Remove-Item $zip -Force -ErrorAction SilentlyContinue
     }
 
     if (Test-Path $dir) {
-        Remove-Item $dir -Recurse -Force
+        Remove-Item $dir -Recurse -Force -ErrorAction SilentlyContinue
     }
 
     Write-Host "Downloading VEXOR..." -ForegroundColor Cyan
@@ -35,7 +34,7 @@ try {
 
     Write-Host "Starting VEXOR..." -ForegroundColor Cyan
 
-    Start-Process $exe.FullName
+    Start-Process -FilePath $exe.FullName
 
     Write-Host "VEXOR STARTED." -ForegroundColor Green
 }
